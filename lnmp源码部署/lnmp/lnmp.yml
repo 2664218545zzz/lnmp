@@ -1,0 +1,21 @@
+---
+- name: deploy lamp
+  hosts: c85
+  tasks:
+    - name: copy files 
+      copy:
+        src: ../files_local/
+        dest: /usr/src/
+    - import_tasks: ../modules/webs/nginx/nginx.yml
+    - import_tasks: ../modules/databases/mysql/mysql.yml
+    - import_tasks: ../modules/applacations/php/php.yml
+
+    - name: copy nginx.conf to /usr/local/nginx/conf/
+      copy:
+        src: files/nginx.conf
+        dest: /usr/local/nginx/conf/nginx.conf
+
+    - name: use script of lnmp
+      script: files/lnmp.sh
+
+
