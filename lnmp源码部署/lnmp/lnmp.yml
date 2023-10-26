@@ -1,5 +1,5 @@
 ---
-- name: deploy lamp
+- name: deploy lnmp
   hosts: c85
   tasks:
     - name: copy files 
